@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="zjy">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+        /* 延迟加载 */
+
+        #photo {
+            width: 900px;
+            background-color: blue;
+            padding: 10px 0;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        #photo dl {
+            float: left;
+            width: 225px;
+            height: 275px;
+            margin: 5px 0 15px;
+        }
+
+        #photo dl dt {
+            width: 100%;
+            height: 250px;
+            margin: 0 auto;
+        }
+
+        #photo dl dt img {
+            display: block;
+            cursor: pointer;
+            margin: 0 auto;
+            opacity: 0;
+        }
+
+        #photo dl dd {
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+            color: white;
+        }
+        /* 遮罩层 */
+
+        #screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0;
+            z-index: 500;
+            display: none;
+        }
+
+        #bigPhoto {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 620px;
+            height: 510px;
+            border: 1px solid #cccccc;
+            background-color: grey;
+            /* opacity: 0; */
+            z-index: 1000%;
+            display: none;
+            z-index: 1000;
+        }
+
+        #bigPhoto h2 {
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-image: url('imgs/login_header.png');
+            font-size: .875rem;
+            letter-spacing: 2px;
+        }
+
+        #bigPhoto h2 img {
+            float: right;
+            position: absolute;
+            top: 13px;
+            right: 8px;
+            cursor: pointer;
+        }
+
+        #bigPhoto .big {
+            height: 460px;
+            padding-top: 10px;
+            background-color: #333333;
+        }
+
+        #bigPhoto .big img {
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            top: 190px;
+            opacity: 0;
+        }
+
+        #bigPhoto .big strong {
+            display: block;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 60px;
+            color: white;
+            opacity: 0;
+            background-color: black;
+            position: absolute;
+        }
+
+        #bigPhoto .big .sl {
+            left: 20px;
+            top: 205px;
+        }
+
+        #bigPhoto .big .sr {
+            right: 20px;
+            top: 205px;
+        }
+
+        #bigPhoto .big span {
+            display: block;
+            position: absolute;
+            top: 50px;
+            background-color: black;
+            cursor: pointer;
+            width: 300px;
+            height: 450px;
+            opacity: 0;
+        }
+
+        #bigPhoto .big .left {
+            left: 10px;
+        }
+
+        #bigPhoto .big .right {
+            right: 10px;
+        }
+
+        #bigPhoto .big em {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width:80%;height:1100px;margin:0 auto;background-color:yellow;">
+
+    </div>
+    <div id="photo">
+
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p1.jpg" bigSrc="imgs/p1big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p2.jpg" bigSrc="imgs/p2big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p3.jpg" bigSrc="imgs/p3big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p4.jpg" bigSrc="imgs/p4big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p5.jpg" bigSrc="imgs/p5big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p6.jpg" bigSrc="imgs/p6big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p7.jpg" bigSrc="imgs/p7big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p8.jpg" bigSrc="imgs/p8big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p9.jpg" bigSrc="imgs/p9big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p10.jpg" bigSrc="imgs/p10big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p11.jpg" bigSrc="imgs/p11big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+        <dl>
+            <dt><img src="imgs/wait_load.jpg" alt="" xsrc="imgs/p12.jpg" bigSrc="imgs/p12big.jpg" class="wait_load"></dt>
+            <dd>延迟加载和预加载</dd>
+        </dl>
+
+    </div>
+    <div style="clear:both;"></div>
+    <div id="screen"></div>
+    <div id="bigPhoto">
+        <h2><img src="./imgs/close.png" alt="" class="close">预加载图片</h2>
+        <div class="big">
+            <img src="./imgs/loading.gif" alt="">
+            <strong class="sl">&lt;</strong>
+            <strong class="sr">&gt;</strong>
+            <span class="left"></span>
+            <span class="right"></span>
+            <em class="index">1/12</em>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js">
+
+    </script>
+    <script>
+        $(function () {
+            // 延迟加载图片
+            // 当图片满足某霞条件时，设置图片src，让图片进行加载
+            function delayImgLoad() {
+
+                setTimeout(function () {
+                    $('.wait_load').each(function (index) {
+                        // 判断如果图片距离文档顶部的距离，小于窗口高度加上文档滑动上去的距离，则开始加载图片
+                        if ($(window).height() + $(document).scrollTop() >= $(this).offset().top) {
+                            $(this).attr('src', $(this).attr('xsrc')).animate({
+                                opacity: 1,
+                            }, 5000)
+                        }
+                    }
+                    )
+                }, 500)
+            }
+
+            delayImgLoad();
+            $(window).on('resize', delayImgLoad);
+            $(document).on('scroll', delayImgLoad)
+
+            function getScreenWH() {
+                var width = $(document).width();
+                var height = $(document).height();
+                $('#screen').width(width).height(height)
+            }
+
+            function centerBigPhoto() {
+                var top = ($(window).height() - $('#bigPhoto').height()) / 2 + $(document).scrollTop()
+                var left = ($(window).width() - $('#bigPhoto').width()) / 2 + $(document).scrollLeft()
+                $('#bigPhoto').css({
+                    'top': top,
+                    'left': left
+                })
+            }
+
+            $(window).on('resize', getScreenWH)
+            $(document).on('scorll', getScreenWH)
+            $(window).on('resize', centerBigPhoto)
+            $(document).on('scorll', centerBigPhoto)
+
+            $('.wait_load').click(function () {
+                getScreenWH()
+                centerBigPhoto()
+                $('#screen').css('display', 'block').animate(
+                    {
+                        opacity: 0.5
+                    }, 500)
+                $('#bigPhoto').css('display', 'block')
+                document.body.style.overflow = 'hidden'
+                var temp_img = new Image();
+                temp_img.src = $(this).attr('bigSrc')
+                $(temp_img).on('load', function () {
+                    $('#bigPhoto .big img').attr('src', temp_img.src).animate({
+                        opacity: 1
+                    }).css({
+                        width: 600,
+                        height: 450,
+                        top: 0,
+                    })
+                }
+                )
+                var dl = $(this).parent().parent();
+                preAndNxtImg(dl);
+            })
+
+            $('.close').click(function () {
+                {
+                    $('#screen').animate(
+                        {
+                            opacity: 0,
+                        }, 500).css('display', 'none')
+                    $('#bigPhoto').css('display', 'none')
+                    document.body.style.overflow = 'auto'
+                    $('#bigPhoto .big img').attr('src', './imgs/loading.gif').css({
+                        top: 190,
+                        width: 32,
+                        height: 32
+                    })
+
+                }
+            })
+
+
+            // 显示左右两侧strong
+            $('#bigPhoto .big .left').hover(function () {
+                $('#bigPhoto .big .sl').stop().animate({
+                    opacity: 0.5,
+                }, 'fast')
+            }, function () {
+                $('#bigPhoto .big .sl').stop().animate({
+                    opacity: 0,
+                }, 'fast')
+            })
+
+            $('#bigPhoto .big .right').hover(function () {
+                $('#bigPhoto .big .sr').stop().animate({
+                    opacity: 0.5,
+                }, 'fast')
+
+            }, function () {
+                $('#bigPhoto .big .sr').stop().animate({
+                    opacity: 0,
+                }, 'fast')
+            })
+
+
+            // 封装上一张和下一站图片的预加载方法
+            function preAndNxtImg(dl) {
+                // 前一张图片的索引
+                var prev = dl.prev().index();
+                if (prev == -1) {
+                    prey = $('#photo dl').length - 1;
+                }
+                // 后一张图片的索引
+                var next = dl.next().index();
+                if (next == -1) {
+                    next = 0;
+                }
+
+                // 创建下一张和上一张图片
+                var prev_img = new Image();
+                var next_img = new Image();
+
+
+                prev_img.src = $('.wait_load').eq(prev).attr('bigSrc')
+                next_img.src = $('.wait_load').eq(next).attr('bigSrc')
+
+                $(prev_img).on('load', function () {
+                    $('#bigPhoto .big .left').attr('src', prev_img.src)
+                })
+
+                $(next_img).on('load', function () {
+                    $('#bigPhoto .big .right').attr('src', next_img.src)
+                })
+
+                $('#bigPhoto .big img').attr('index', dl.index())
+                $('#bigPhoto .big em').text(parseInt(dl.index()) + 1 + '/' + $('dl').length)
+
+            }
+
+
+
+            $('#bigPhoto .big .left').click(function () {
+                // $('#bigPhoto .big img').attr('src', './imgs/loading.gif').css({
+                //     width: 32,
+                //     height: 32,
+                //     top: 190
+                // })
+                var current_img = new Image();
+                current_img.src = $(this).attr('src');
+
+                $(current_img).on('load', function () {
+                    // 当图片加载完需要把图片显示在弹出层的大图上
+                    $('#bigPhoto .big img').attr('src', current_img.src).animate({
+                        opacity: 1
+                    }, 'fast').css({
+                        width: 600,
+                        height: 450,
+                        top: 0
+                    })
+
+                })
+
+                var current_index = $('#bigPhoto .big img').attr('index') == 0 ? $('.wait_load').length - 1 : parseInt($('#bigPhoto .big img').attr('index'))-1
+                var dl = $('#photo dl').eq(current_index);
+                preAndNxtImg(dl);
+
+
+            })
+
+            $('#bigPhoto .big .right').click(function () {
+                $('#bigPhoto .big img').attr('src', './imgs/loading.gif').css({
+                    width: 32,
+                    height: 32,
+                    top: 190
+                })
+                var current_img = new Image();
+                current_img.src = $(this).attr('src');
+
+                $(current_img).on('load', function () {
+                    // 当图片加载完需要把图片显示在弹出层的大图上
+                    $('#bigPhoto .big img').attr('src', current_img.src).animate({
+                        opacity: 1
+                    }, 'fast').css({
+                        width: 600,
+                        height: 450,
+                        top: 0
+                    })
+
+                })
+                var current_index = $('#bigPhoto .big img').attr('index') ==$('.wait_load').length -1? 0:parseInt($('#bigPhoto .big img').attr('index'))+1
+                var dl = $('#photo dl').eq(current_index)
+                preAndNxtImg(dl);
+
+
+            })
+        })
+
+
+        function showImg(){
+
+        }
+    </script>
+</body>
+
+</html>
